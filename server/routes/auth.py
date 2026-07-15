@@ -45,7 +45,7 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
         raise HTTPException(400, 'Incorrect password!')
     
 
-    tiempo_expiracion = datetime.now(timezone.utc) + timedelta(seconds=120)
+    tiempo_expiracion = datetime.now(timezone.utc) + timedelta(hours=2)
     
     payload = {
         'id': user_db.id,
