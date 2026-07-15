@@ -1,0 +1,31 @@
+.env
+client/build/
+
+# Herramientas de Dart y dependencias
+client/.dart_tool/
+client/.flutter-plugins
+client/.flutter-plugins-dependencies
+client/.pub-cache/
+client/.pub/
+client/build/
+client/lib/generated_plugin_registrant.dart
+
+# Android: Archivos de compilación y claves (¡Muy importante!)
+client/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+client/android/key.properties
+client/android/.gradle/
+client/android/local.properties
+
+# iOS: Archivos generados y dependencias nativas
+client/ios/Flutter/.last_build_id
+client/ios/Flutter/App.framework
+client/ios/Flutter/Flutter.framework
+client/ios/Flutter/Flutter.podspec
+client/ios/Flutter/Generated.xcconfig
+client/ios/Flutter/flutter_export_environment.sh
+client/ios/Pods/
+client/ios/.symlinks/
+
+# Si compilas para macOS/Web/Linux (Opcional)
+client/macos/Flutter/GeneratedPluginRegistrant.swift
+client/macos/Flutter/ephemeral/
