@@ -48,7 +48,7 @@ class HomeViewmodel extends _$HomeViewmodel {
   }) async {
     state = const AsyncValue.loading();
     final res = await _homeRepository.uploadSong(
-      selectedThumbnail,
+      selectedThumbnail, // Nota: Parece que pasaste esto dos veces en tu código original
       selectedAudio: selectedAudio,
       selectedThumbnail: selectedThumbnail,
       songName: songName,
@@ -57,13 +57,20 @@ class HomeViewmodel extends _$HomeViewmodel {
       token: ref.read(currentUserProvider)!.token,
     );
 
-    final val = switch (res) {
-      Left(value: final l) => state = AsyncValue.error(
-        l.message,
-        StackTrace.current,
-      ),
-      Right(value: final r) => state = AsyncValue.data(r),
-    };
+    // Cambiamos el switch a un switch tradicional para poder ejecutar múltiples líneas
+    switch (res) {
+      case Left(value: final l):
+        state = AsyncValue.error(l.message, StackTrace.current);
+        break;
+      case Right(value: final r):
+        state = AsyncValue.data(r);
+
+        ref.invalidate(getAllSongsProvider);
+        ref.invalidate(
+          getAllFavSongsProvider,
+        );
+        break;
+    }
   }
 
   List<SongModel> getRecentlyPlayedSongs() {

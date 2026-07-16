@@ -6,6 +6,6 @@ class ServerConstant {
   //     : 'http://127.0.0.1:8000';
 
   static String serverURL = Platform.isAndroid
-      ? 'musicapp-lagos.up.railway.app'
-      : 'musicapp-lagos.up.railway.app';
+      ? 'https://musicapp-lagos.up.railway.app'
+      : 'https://musicapp-lagos.up.railway.app';
 }

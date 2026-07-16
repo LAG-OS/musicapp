@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from routes import auth, song
 from models.base import Base
 from database import engine
+import models
+
+Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI()

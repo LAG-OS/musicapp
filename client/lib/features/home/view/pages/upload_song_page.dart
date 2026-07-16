@@ -54,9 +54,22 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Escuchar los cambios del viewmodel para reaccionar con navegación/snackbars
+    ref.listen(homeViewmodelProvider, (previous, next) {
+      if (next != null && !next.isLoading) {
+        if (next.hasError) {
+          showSnackBar(context, next.error.toString());
+        } else if (next.hasValue) {
+          showSnackBar(context, '¡Canción subida con éxito!');
+          Navigator.of(context).pop(); // Cierra el widget automáticamente
+        }
+      }
+    });
+
     final isLoading = ref.watch(
       homeViewmodelProvider.select((val) => val?.isLoading == true),
     );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Upload Song'),
